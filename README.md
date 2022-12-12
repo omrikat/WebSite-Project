@@ -25,11 +25,11 @@ The push will first trigger a simple test that will check if the gallery website
 1. Go to the [AWS console](https://aws.amazon.com/console/)
 2. Log into your account and go to the cloud formation section.
 3. Choose "Upload a template file",then upload the "deployment.yaml" file and press "Next".
-![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws1.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/a1.png)
 4.Type a name under "Stack Name" and then press "Next".
-![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws2.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/a2.png)
 5.Scroll down and then Click on the checkbook then press "Submit"
-![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws3.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/a3.png)
 6.Should waiting for the status to be "CREATE_COMPLETE"
 ![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws4.png)
 
