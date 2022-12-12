@@ -41,10 +41,10 @@ After the CloudFormation run done. go to lambda function in AWS account.
 ![image](https://github.com/omrikat/WebSiteProject/blob/main/ApiGatewayLink.png)
 3.) Go to GitHub account and select your repo
 4.) in the repo click on settings in the top left
-![image](https://github.com/omrikat/WebSiteProject/blob/main/s1.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/s1.png)
 5.) Click on Webhooks in the right table then click on "Add webhook" in the top right
-![image](https://github.com/omrikat/WebSiteProject/blob/main/s3.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/s3.png)
 6.)Past the endPoint for the API Gateway under "payload URL", then choose which event would you like to trigger , then Click on "Add Webhooks" button .
-![image](https://github.com/omrikat/WebSiteProject/blob/main/s4.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/s4.png)
 ## Maintainers
 This repository is maintained by Omri Katesh.
