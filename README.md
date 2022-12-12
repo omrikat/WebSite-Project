@@ -36,9 +36,9 @@ The push will first trigger a simple test that will check if the gallery website
 ### 2. Configuring the github repository
 After the CloudFormation run done. go to lambda function in AWS account.
 1.) Go to API "Getaway"
-![image](https://github.com/omrikat/WebSiteProject/blob/main/API-Gateway.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/API-Gateway.png)
 2.) Copy the API endpoint
-![image](https://github.com/omrikat/WebSiteProject/blob/main/ApiGatewayLink.png)
+![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/ApiGatewayLink.png)
 3.) Go to GitHub account and select your repo
 4.) in the repo click on settings in the top left
 ![image](https://github.com/omrikat/WebSite-Project/blob/main/recourse/s1.png)
