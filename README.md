@@ -5,7 +5,7 @@ The following project is to create and deploy an architicture for an image galle
 2. Support continious deployment by synchronizing the github "main" to the instances.
 
 ## Architecture  
-![AWS diagram](https://github.com/omrikat/WebSite-Project/blob/main/Aws-diagram1)
+![AWS diagram](https://github.com/omrikat/WebSite-Project/blob/main/Aws-diagram1.jpg)
 
 ### Scalability support
 The scalability is managed by deploying the application into 3 EC2 instances that share the traffic. The external internet traffic is managed and routed by an elastic load balancer. The web application is shared among the instances through an elastic file system (EFS) that is connected to the EC2 instances.
