@@ -265,10 +265,10 @@ Resources:
           LocalMountPath: /mnt/efs
       Code:
         ZipFile: |
-          from botocore.vendored import requests
+          import requests
 
           def handler(event,context):
-            response = requests.get("https://raw.githubusercontent.com/omrikat/WebSite-Project/main/index.html")
+            response = requests.get('https://github.com/omrikat/WebSite-Project/blob/main/index.html')
             title = '<h1>My photo gallery</h1>'
             isIncluded = title in response.text
             if(isIncluded == True):
@@ -282,7 +282,7 @@ Resources:
                     },
                     'statusCode': 200
                   }
-             else:
+            else:
               return{
                'body':"The WebSite Dosn't Include the title anymore , deployment failed!",
                'headers': {
@@ -294,7 +294,7 @@ Resources:
       Handler: index.handler
       MemorySize: 128
       Role: !GetAtt lambdaIAMRole.Arn
-      Runtime: python3.7
+      Runtime: python3.9
       VpcConfig:
         SecurityGroupIds:
           - !Ref InstanceSecurityGroup
@@ -337,6 +337,7 @@ Resources:
                   - 'ec2:CreateNetworkInterface'
                   - 'ec2:DescribeNetworkInterfaces'
                   - 'ec2:DeleteNetworkInterface'
+                  - 'lambda:PublishLayerVersion'
                 Resource: '*'
 
   lambdaLogGroup:
