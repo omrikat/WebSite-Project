@@ -24,10 +24,14 @@ The push will first trigger a simple test that will check if the gallery website
 #### 1.b Deploying through the AWS console:
 1. Go to the [AWS console](https://aws.amazon.com/console/)
 2. Log into your account and go to the cloud formation section.
-3. ![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws1.png)
-4. ![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws2.png)
-5. ![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws3.png)
-6. ![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws4.png)
+3. 
+![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws1.png)
+4.
+![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws2.png)
+5.
+![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws3.png)
+6.
+![image](https://github.com/omrikat/WebSiteProject/blob/main/Aws4.png)
 
 ### 2. Configuring the github repository
 

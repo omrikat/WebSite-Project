@@ -87,7 +87,7 @@ Resources:
   KeyPair:
     Type: AWS::EC2::KeyPair
     Properties:
-      KeyName: aws-OmriKey
+      KeyName: aws-OmriKey2
 
   MyInstance:
     Type: AWS::EC2::Instance
@@ -248,13 +248,20 @@ Resources:
       RestApiId: !Ref apiGateway
       StageName: !Ref apiGatewayStageName
 
+  AccessPoint:
+    Type: AWS::EFS::AccessPoint
+    Properties:
+      FileSystemId: !Ref EFSFileSystem
+
   lambdaFunction:
     Type: AWS::Lambda::Function
     DependsOn:
       - MountTarget1
+      - EFSFileSystem
+      - AccessPoint
     Properties:
       FileSystemConfigs:
-        - Arn: !GetAtt MountTarget1.Arn
+        - Arn: !GetAtt AccessPoint.Arn
           LocalMountPath: /mnt/efs
       Code:
         ZipFile: |
@@ -288,6 +295,11 @@ Resources:
       MemorySize: 128
       Role: !GetAtt lambdaIAMRole.Arn
       Runtime: python3.7
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref InstanceSecurityGroup
+        SubnetIds:
+          - !Ref PublicSubnet
 
   lambdaApiGatewayInvoke:
     Type: AWS::Lambda::Permission
@@ -300,29 +312,32 @@ Resources:
       SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${apiGateway}/${apiGatewayStageName}/${apiGatewayHTTPMethod}/
 
   lambdaIAMRole:
-    Type: AWS::IAM::Role
+    Type: 'AWS::IAM::Role'
     Properties:
       AssumeRolePolicyDocument:
-        Version: 2012-10-17
+        Version: '2012-10-17'
         Statement:
-          - Action:
-              - sts:AssumeRole
-            Effect: Allow
+          - Effect: 'Allow'
             Principal:
               Service:
-                - lambda.amazonaws.com
+                - 'lambda.amazonaws.com'
+            Action:
+              - 'sts:AssumeRole'
+      Path: '/'
       Policies:
-        - PolicyDocument:
-            Version: 2012-10-17
+        - PolicyName: 'AWSLambdaVPCAccessExecutionRole'
+          PolicyDocument:
+            Version: '2012-10-17'
             Statement:
-              - Action:
-                  - logs:CreateLogGroup
-                  - logs:CreateLogStream
-                  - logs:PutLogEvents
-                Effect: Allow
-                Resource:
-                  - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${lambdaFunctionName}:*
-          PolicyName: lambda
+              - Effect: 'Allow'
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                  - 'ec2:CreateNetworkInterface'
+                  - 'ec2:DescribeNetworkInterfaces'
+                  - 'ec2:DeleteNetworkInterface'
+                Resource: '*'
 
   lambdaLogGroup:
     Type: AWS::Logs::LogGroup
